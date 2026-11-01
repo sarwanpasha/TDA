@@ -15,8 +15,9 @@ baselines and evaluation scripts used in the accompanying paper.
 | `train_alpha.py` | Learned filtration on the weighted alpha complex |
 | `train_mpl.py` | Multiparameter persistence landscapes computed exactly on diagonal slices |
 | `baselines.py` | DeepSets, GraphSAGE, GIN, GAT and Ripley-K baselines |
-| `collect.py` | Seed-averaged out-of-fold AUCs and paired patient bootstrap contrasts |
-| `robust2.py`, `robustness.py` | Segmentation-noise robustness of trained models |
+| `collect.py`, `collect_review.py` | Seed-averaged out-of-fold AUCs and paired patient bootstrap contrasts |
+| `robust2.py`, `robustness.py`, `robust3.py` | Segmentation-noise robustness of trained models (`robust3.py`: features recomputed from the subsampled cells) |
+| `train_review.py` | Controls: coordinate-only learned filtration, gate without persistence, cross-validated reference, designed filtrations on the alpha complex |
 | `stability_theta.py`, `lipschitz_norm.py`, `lipschitz_theta.py`, `lipvec.py`, `margin.py`, `paircount.py` | Empirical checks of the stability results and their constants |
 | `transfer.py`, `transfer_jk.py`, `qnorm.py`, `coarse.py` | Cross-cohort transfer without refitting |
 | `scaling.py` | Cost of one persistence pass against the number of cells |
@@ -24,7 +25,7 @@ baselines and evaluation scripts used in the accompanying paper.
 | `build_graphs.py`, `prep_danenberg.py`, `prep_jackson.py`, `codexprep.py`, `keren_prep.py`, `build_cap.py` | Cohort preprocessing into the shared record format |
 | `clinical.py`, `jclinical.py` | Clinical endpoints from the published patient tables |
 | `frac.py`, `featmask.py` | Learning-curve subsampling and feature-block ablations |
-| `runlist.py`, `mklists.py`, `mklists2.py`, `job_tp.sbatch`, `submit_tp.sh` | Worklists and batch submission |
+| `runlist.py`, `mklists.py`, `mklists2.py`, `mkreview.py`, `job_tp.sbatch`, `submit_tp.sh` | Worklists and batch submission |
 
 ## Data and paths
 
