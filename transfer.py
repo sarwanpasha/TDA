@@ -105,7 +105,14 @@ def main():
     res = {}
     for v in variants:
         t0 = time.time()
-        R = np.stack([fit_predict(tr, y_tr, te, v, s, d_in, ref, ref) for s in seeds])
+        ref_v = ref
+        if v.startswith('fixed_tuned'):
+            # the reference is chosen on the source cohort only, as in train_learned.py
+            from train_learned import choose_reference
+            j = int(choose_reference(tr, np.arange(len(tr)), y_tr.astype(int), len(L)))
+            ref_v = dict(onehot=j, dist=len(L) + j)
+            print('tuned reference', L[j], flush=True)
+        R = np.stack([fit_predict(tr, y_tr, te, v, s, d_in, ref_v, ref_v) for s in seeds])
         r = R.mean(0)
         auc = roc_auc_score(y_te, r)
         rng = np.random.default_rng(0)
